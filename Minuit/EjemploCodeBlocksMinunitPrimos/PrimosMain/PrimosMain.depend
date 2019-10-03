@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1570141018 source:c:\users\20171022\desktop\minuit\ejemplocodeblocksminunitprimos\primosmain\main.c
+	<stdio.h>
+	<stdlib.h>
+	"miLibreria.h"
+
+1570136031 c:\users\20171022\desktop\minuit\ejemplocodeblocksminunitprimos\primosmain\milibreria.h
+
+1570136031 source:c:\users\20171022\desktop\minuit\ejemplocodeblocksminunitprimos\primosmain\milibreria.c
+	<math.h>
+	"miLibreria.h"
+

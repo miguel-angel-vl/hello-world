@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1570134801 source:c:\tmp\primosmain\milibreria.c
+	<math.h>
+	"miLibreria.h"
+
+1570134804 c:\tmp\primosmain\milibreria.h
+
+1570136031 source:c:\users\20171022\desktop\minuit\ejemplocodeblocksminunitprimos\primominunit\main.c
+	"minunit.h"
+	"../PrimosMain/miLibreria.h"
+
+1570136031 c:\users\20171022\desktop\minuit\ejemplocodeblocksminunitprimos\primominunit\minunit.h
+	<windows.h>
+	<unistd.h>
+	<time.h>
+	<sys/time.h>
+	<sys/resource.h>
+	<sys/times.h>
+	<string.h>
+	<mach/mach.h>
+	<mach/mach_time.h>
+	<stdio.h>
+	<math.h>
+
+1570136031 c:\users\20171022\desktop\minuit\ejemplocodeblocksminunitprimos\primosmain\milibreria.h
+
+1570136031 source:c:\users\20171022\desktop\minuit\ejemplocodeblocksminunitprimos\primosmain\milibreria.c
+	<math.h>
+	"miLibreria.h"
+
