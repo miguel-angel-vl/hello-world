@@ -9,19 +9,19 @@ int main()
 
     printf("PIRAMIDE DE LETRAS\n");
 
-    for(ind = 1; ind <='Z-A'; ind++){
+    for(ind = 1; ind <= 'Z'-'A'; ind++){
 
-        for(espacio = 1; espacio < ('Z'-'A')-ind; espacio++){
+        for(espacio = 0; espacio < ('Z'-'A')- ind; espacio++){
             printf(" ");
         }
 
-        for(letras = 0; letras < ind; letras++){
-            printf("%c", 'A'+letras);
+        for(letras = 0; letras <= ind; letras++){
+            caract = 'A'+letras;
+            printf("%c", caract);
         }
 
         printf("\n");
     }
-
 
     return 0;
 }
