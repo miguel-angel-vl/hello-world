@@ -4,7 +4,6 @@
 int sumatoria(int, int, int);
 int mcd(int , int);
 
-
 int main()
 {
     int val, min, max;
@@ -20,16 +19,16 @@ int main()
         }
     }while(min < 1);
 
-        do{
+    do{
         printf("Ingrese m%cximo del rango: ", 160);
         scanf("%d", &max);
 
         if(max<min){
-            printf("NO PUEDE SER MENOR QUE MINIMO");
+            printf("\nNO PUEDE SER MENOR QUE MINIMO\n\n");
         }
     }while(max<min);
 
-    printf("LA SUMATORIA DE LOS MCD PARES DENTRO DEL RANGO ES: %d", sumatoria(val, min, max));
+    printf("\nLA SUMATORIA DE LOS MCD PARES DENTRO DEL RANGO ES: %d\n", sumatoria(val, min, max));
 
     return 0;
 }
@@ -38,11 +37,9 @@ int sumatoria(int num, int liminf, int limsup){
 
     int suma = 0;
 
-
     do{
         if((mcd(num, liminf)) % 2 == 0){
             suma += mcd(num, liminf);
-            printf("\n%d\n", suma);
         }
         liminf++;
     }while(liminf<=limsup);
@@ -57,8 +54,8 @@ int mcd(int x, int y){
 
     if(y > x){
         aux = x;
-        y = aux;
         x = y;
+        y = aux;
     }
 
     for(div = x; div>=1; div--){
@@ -67,9 +64,9 @@ int mcd(int x, int y){
             break;
         }
     }
-
     return 1;
 }
+
 
 
 

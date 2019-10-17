@@ -7,15 +7,16 @@ int main()
 {
     int num1, num2;
 
-    printf("Ingrese dos n%cmeros: ",163);
-    scanf("%d, %d", &num1, &num2);
+    printf("Ingrese primer n%cmero: ",163);
+    scanf("%d", &num1);
 
-    printf("El m%cximo com%cn divisor es: %d", 162, 160, mcd(num1, num2));
+    printf("Ingrese segundo n%cmero: ",163);
+    scanf("%d", &num2);
 
+    printf("\nEl m%cximo com%cn divisor es: %d\n", 160, 163, mcd(num1, num2));
 
     return 0;
 }
-
 
 int mcd(int x, int y){
 
@@ -23,8 +24,8 @@ int mcd(int x, int y){
 
     if(y > x){
         aux = x;
-        y = aux;
         x = y;
+        y = aux;
     }
 
     for(div = x; div>=1; div--){

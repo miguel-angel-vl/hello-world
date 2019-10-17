@@ -4,14 +4,28 @@
 int main()
 {
 
-    int ind, espacio, letras;
+    int ind, espacio, letras, lineas;
     char caract;
 
-    printf("PIRAMIDE DE LETRAS\n");
+    printf("PIRAMIDE DE LETRAS\n\n");
 
-    for(ind = 1; ind <= 'Z'-'A'; ind++){
+    do{
+        printf("Ingrese cantidad de lineas: ");
+        scanf("%d", &lineas);
 
-        for(espacio = 0; espacio < ('Z'-'A')- ind; espacio++){
+        if(lineas < 0){
+            printf("NO PUEDE SER MENOR QUE 0\n\n");
+        }
+
+        if(lineas < 0 || lineas > 'Z'-'A'){
+            printf("NO PUEDE SER MAYOR QUE %d\n\n", 'Z'-'A'+1);
+        }
+
+    }while(lineas < 0 || lineas > 'Z'-'A'+1);
+
+    for(ind = 0; ind < lineas; ind++){
+
+        for(espacio = 0; espacio < ('Z'-'A')-ind; espacio++){
             printf(" ");
         }
 
