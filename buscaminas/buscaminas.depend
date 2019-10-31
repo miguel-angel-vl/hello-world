@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1572559401 source:c:\users\20171022\desktop\buscaminas\main.c
+1572561358 source:c:\users\20171022\desktop\buscaminas\main.c
 	<stdio.h>
 	<time.h>
 	<stdlib.h>
 	"funciones_buscaminas.h"
 
-1572559370 source:c:\users\20171022\desktop\buscaminas\funciones_buscaminas.c
+1572560545 source:c:\users\20171022\desktop\buscaminas\funciones_buscaminas.c
 	"funciones_buscaminas.h"
 
-1572559388 c:\users\20171022\desktop\buscaminas\funciones_buscaminas.h
+1572560545 c:\users\20171022\desktop\buscaminas\funciones_buscaminas.h
 

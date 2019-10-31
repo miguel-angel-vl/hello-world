@@ -87,9 +87,12 @@ void click(int matriz_visual[90][90], int matriz_valores[90][90], int n, int m, 
     if(matriz_valores[i][j] == 'b'){
         return;
     }else{
+        iff//si es un numero de 0 a 9
         matriz_visual[i][j] = matriz_valores[i][j];
 
-        if(matriz_valores[i+1][j] == 0){//condicion de parada
+
+
+        if(matriz_valores[i+1][j] >= 0){//condicion de parada >=0 <=9
             click(matriz_visual, matriz_valores, n, m, i+1, j);
         }
         if(matriz_valores[i+1][j+1]== 0){

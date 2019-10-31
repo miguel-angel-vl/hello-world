@@ -13,7 +13,7 @@ int main() {
 //    scanf("%d %d %d", &col, &filas, &bombas);
 col=6;
 filas=6;
-bombas=2;
+bombas=3;
     inicializa(matriz_valores, col, filas);
     inicializa(matriz_visual, col, filas);
     generar_bombas(matriz_valores,col,filas,bombas);
