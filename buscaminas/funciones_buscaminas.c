@@ -86,19 +86,26 @@ void click(int matriz_visual[90][90], int matriz_valores[90][90], int n, int m, 
     int temp;
 
     if(i >= n || j >= m || i < 0 || j < 0 ){
+
+        matriz_visual[i][j] = matriz_valores[i][j];
+
         return;
     }
+
+    matriz_visual[i][j] = matriz_valores[i][j];
 
     if(matriz_visual[i][j] != '#' || matriz_valores[i][j] == 'b' ){
         return;
     }else{
+
+
         if(matriz_valores[i][j] >= 0 && matriz_valores[i][j] <=9){
+
+            matriz_visual[i][j] = matriz_valores[i][j];
 
             if(matriz_valores[i][j] != 0){
                 return;
             }
-
-            matriz_visual[i][j] = matriz_valores[i][j];
 
         //if(matriz_valores[i+1][j]){//condicion de parada >=0 <=9
             click(matriz_visual, matriz_valores, n, m, i+1, j);
