@@ -91,10 +91,14 @@ void click(int matriz_visual[90][90], int matriz_valores[90][90], int n, int m, 
 
         return;
     }
-
+    
+    if (matriz_visual[i][j] != '#') {
+        return;
+    }
+    
     matriz_visual[i][j] = matriz_valores[i][j];
 
-    if(matriz_visual[i][j] != '#' || matriz_valores[i][j] == 'b' ){
+    if(matriz_valores[i][j] == 'b' ){
         return;
     }else{
 
