@@ -1,83 +1,43 @@
 #include "minunit.h"
+#include <string.h>
 
 #include "../funciones_buscaminas.h"
+//void explosion(int matriz_valores[90][90], int matriz_visual[90][90], int matriz_visitados[90][90], int n, int m, int i, int j);
 
-static int foo = 0;
-static int bar = 0;
-static double dbar = 0.1;
-static const char* foostring = "Thisstring";
+MU_TEST(test_click1) {
+	int m=5, n=4;
+	int matvalores[4][5] = {
+		{1, 1, 1, 0, 0},
+		{1,'b',2 ,1, 1},
+		{1, 1, 2,'b',1},
+		{0, 0, 1, 1, 1},
+	};
+	int matvisual[4][5] = {
+		{'#', '#', '#', '#', '#'},
+		{'#', '#', '#', '#', '#'},
+		{'#', '#', '#', '#', '#'},
+		{'#', '#', '#', '#', '#'},
+	};
 
-void test_setup(void) {
-	foo = 7;
-	bar = 4;
+	click(matvalores, matvisual, n, m, 3, 0);
+	int matres[4][5] = {
+		{'#', '#', '#', '#', '#'},
+		{'#', '#', '#', '#', '#'},
+		{1,   1,    2,  '#', '#'},
+		{0  , 0,    1, '#', '#'},
+	};
+	int i, j;
+	for(i=0; i<n;i++)
+		for(j=0; j<m;j++)
+			printf("%d, %d, %d, %d\n, ", i, j,matvisual[i][j], matres[i][j]);
+			mu_assert_int_eq(matvisual[i][j], matres[i][j] );
+
 }
-
-void test_teardown(void) {
-	/* Nothing */
-}
-
-MU_TEST(test_check) {
-	mu_check(foo == 7);
-}
-
-MU_TEST(test_check_fail) {
-	mu_check(foo != 7);
-}
-
-MU_TEST(test_assert) {
-	mu_assert(foo == 7, "foo should be 7");
-}
-
-MU_TEST(test_assert_fail) {
-	mu_assert(foo != 7, "foo should be <> 7");
-}
-
-MU_TEST(test_assert_int_eq) {
-	mu_assert_int_eq(4, bar);
-}
-
-MU_TEST(test_assert_int_eq_fail) {
-	mu_assert_int_eq(5, bar);
-}
-
-MU_TEST(test_assert_double_eq) {
-	mu_assert_double_eq(0.1, dbar);
-}
-
-MU_TEST(test_assert_double_eq_fail) {
-	mu_assert_double_eq(0.2, dbar);
-}
-
-MU_TEST(test_fail) {
-	mu_fail("Fail now!");
-}
-
-MU_TEST(test_string_eq){
-	mu_assert_string_eq("Thisstring", foostring);
-}
-
-MU_TEST(test_string_eq_fail){
-	mu_assert_string_eq("Thatstring", foostring);
-}
-
 
 MU_TEST_SUITE(test_suite) {
-	MU_SUITE_CONFIGURE(&test_setup, &test_teardown);
 
-	MU_RUN_TEST(test_check);
-	MU_RUN_TEST(test_assert);
-	MU_RUN_TEST(test_assert_int_eq);
-	MU_RUN_TEST(test_assert_double_eq);
+	MU_RUN_TEST(test_click1);
 
-	MU_RUN_TEST(test_check_fail);
-	MU_RUN_TEST(test_assert_fail);
-	MU_RUN_TEST(test_assert_int_eq_fail);
-	MU_RUN_TEST(test_assert_double_eq_fail);
-
-	MU_RUN_TEST(test_string_eq);
-	MU_RUN_TEST(test_string_eq_fail);
-
-	MU_RUN_TEST(test_fail);
 }
 
 int main(int argc, char *argv[]) {

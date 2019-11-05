@@ -79,59 +79,61 @@ int termino(int matriz[90][90], int n, int m, int bombas){
         }
     }
     return 1;
-
 }
+
+int gano(int matriz[90][90], int n, int m, int bombas){
+
+    int i, j, cont = 0;
+
+    for(i = 0; i < n; i++){
+        for(j = 0; j< m; j++){
+            if (matriz[i][j] == '#'){
+                cont++;
+            }
+        }
+    }
+    if(cont == bombas){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
 void click(int matriz_visual[90][90], int matriz_valores[90][90], int n, int m, int i, int j){
 
-    int temp;
-
     if(i >= n || j >= m || i < 0 || j < 0 ){
+        return;
+    }
 
-        matriz_visual[i][j] = matriz_valores[i][j];
-
+    if (matriz_visual[i][j] != '#') {
         return;
     }
 
     matriz_visual[i][j] = matriz_valores[i][j];
 
     if(matriz_visual[i][j] != '#' || matriz_valores[i][j] == 'b' ){
-        return;
-    }else{
+        if(matriz_valores[i][j] == 'b' ){
+            return;
+        }else{
+            if(matriz_valores[i][j] >= 0 && matriz_valores[i][j] <=9){
 
+                matriz_visual[i][j] = matriz_valores[i][j];
 
-        if(matriz_valores[i][j] >= 0 && matriz_valores[i][j] <=9){
+                if(matriz_valores[i][j] != 0){
+                    return;
+                }
 
-            matriz_visual[i][j] = matriz_valores[i][j];
+                click(matriz_visual, matriz_valores, n, m, i+1, j);
+                click(matriz_visual, matriz_valores, n, m, i+1, j+1);
+                click(matriz_visual, matriz_valores, n, m, i+1, j-1);
+                click(matriz_visual, matriz_valores, n, m, i-1, j);
+                click(matriz_visual, matriz_valores, n, m, i-1, j+1);
+                click(matriz_visual, matriz_valores, n, m, i-1, j-1);
+                click(matriz_visual, matriz_valores, n, m, i, j+1);
+                click(matriz_visual, matriz_valores, n, m, i, j-1);
 
-            if(matriz_valores[i][j] != 0){
                 return;
             }
-
-        //if(matriz_valores[i+1][j]){//condicion de parada >=0 <=9
-            click(matriz_visual, matriz_valores, n, m, i+1, j);
-        //}
-        //if(matriz_valores[i+1][j+1]== 0){
-            click(matriz_visual, matriz_valores, n, m, i+1, j+1);
-        //}
-       // if(matriz_valores[i+1][j-1]== 0){
-            click(matriz_visual, matriz_valores, n, m, i+1, j-1);
-       // }
-       // if(matriz_valores[i-1][j]== 0){
-            click(matriz_visual, matriz_valores, n, m, i-1, j);
-        //}
-        //if(matriz_valores[i-1][j+1]== 0){
-            click(matriz_visual, matriz_valores, n, m, i-1, j+1);
-       // }
-       // if(matriz_valores[i-1][j-1]== 0){
-            click(matriz_visual, matriz_valores, n, m, i-1, j-1);
-       // }
-       // if(matriz_valores[i][j+1]== 0){
-            click(matriz_visual, matriz_valores, n, m, i, j+1);
-        //}
-        //if(matriz_valores[i][j-1]== 0){
-            click(matriz_visual, matriz_valores, n, m, i, j-1);
-        //}
-            return;
         }
     }
 }

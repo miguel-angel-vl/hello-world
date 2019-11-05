@@ -9,34 +9,53 @@ int main() {
     srand((unsigned) time(&t));
     int matriz_valores[90][90];
     int matriz_visual[90][90];
-    int col, filas, bombas,i,j, clickeado;
-//    scanf("%d %d %d", &col, &filas, &bombas);
-col=10;
-filas=10;
-bombas=7;
-    inicializa(matriz_valores, col, filas);
-    inicializa(matriz_visual, col, filas);
-    generar_bombas(matriz_valores,col,filas,bombas);
-    generar_numeros(matriz_valores, col, filas);
+    int col, filas, bombas,i,j;
+
+    printf("******************BUSCAMINAS******************\n\n");
+
+    printf("Ingrese cantidad de filas: ");
+    scanf("%d", &filas);
+
+    printf("Ingrese cantidad de columnas: ");
+    scanf("%d", &col);
+
+    do{
+        printf("Ingrese cantidad de bombas: ");
+        scanf("%d", &bombas);
+
+        if(bombas > filas*col){
+            printf("\nNo pueden haber m%cs de %d bombas en la matriz\n\n", 160, filas*col);
+        }
+    }while(bombas > filas*col);
+
+    inicializa(matriz_valores, filas, col);
+    inicializa(matriz_visual, filas, col);
+    generar_bombas(matriz_valores, filas, col, bombas);
+    generar_numeros(matriz_valores, filas, col);
+
     do{
         system("CLS");
 
-        muestra(matriz_valores,col,filas);
+        muestra(matriz_valores, filas, col);
         printf("-------------------\n");
-        muestra(matriz_visual,col,filas);
+        muestra(matriz_visual, filas, col);
 
         printf("\nIngrese coordenadas[x, y]: ");
         scanf("%d, %d", &i, &j);
 
-        click(matriz_visual, matriz_valores, col,filas, i,j);
+        click(matriz_visual, matriz_valores, filas, col, i,j);
 
+        if(gano(matriz_visual, filas, col, bombas) == 1){
+            system("cls");
+            muestra(matriz_valores, filas, col);
+            printf("\nGANASTE!!!\n");
+            return 0;
+        }
+    }while (termino(matriz_visual, filas, col, bombas) == 1);
 
-    }while (termino(matriz_visual, col, filas, bombas) == 1);
-
-    printf("BOOOOM!!! PERDISTE\n");
-
-    muestra(matriz_valores,col,filas);
+    system("cls");
+    muestra(matriz_valores,filas,col);
+    printf("\nBOOOOM!!! PERDISTE\n");
 
     return 0;
 }
-
