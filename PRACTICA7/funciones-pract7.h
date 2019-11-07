@@ -1,6 +1,6 @@
 #ifndef FUNCIONES-PRACT7_H
 
-void elimoracion(char *);
+char* elimoracion(char *);
 
 #endif // FUNCIONES
 

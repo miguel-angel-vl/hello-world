@@ -11,9 +11,7 @@ int main()
     printf("Ingrese frase: ");
     gets(frase);
 
-    elimoracion(frase);
-
-    printf("%s", frase);
+    printf("%s", elimoracion(frase));
 
     return 0;
 }
