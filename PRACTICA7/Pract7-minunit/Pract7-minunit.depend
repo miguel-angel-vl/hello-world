@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1573098293 source:c:\users\work\desktop\lab-algoritmos\practica7\funciones-pract7.c
+	<string.h>
+	"funciones-pract7.h"
+
+1573099213 c:\users\work\desktop\lab-algoritmos\practica7\funciones-pract7.h
+
+1573099395 source:c:\users\work\desktop\lab-algoritmos\practica7\pract7-minunit\main.c
+	"minunit.h"
+	"../funciones-pract7.h"
+
+1573098473 c:\users\work\desktop\lab-algoritmos\practica7\pract7-minunit\minunit.h
+	<Windows.h>
+	<unistd.h>
+	<time.h>
+	<sys/time.h>
+	<sys/resource.h>
+	<sys/times.h>
+	<string.h>
+	<mach/mach.h>
+	<mach/mach_time.h>
+	<stdio.h>
+	<math.h>
+
