@@ -13,11 +13,22 @@ int main() {
 
     printf("******************BUSCAMINAS******************\n\n");
 
-    printf("Ingrese cantidad de filas: ");
-    scanf("%d", &filas);
+    do{
+        printf("Ingrese cantidad de filas: ");
+        scanf("%d", &filas);
 
-    printf("Ingrese cantidad de columnas: ");
-    scanf("%d", &col);
+        if(filas <= 0){
+            printf("N%cmero de filas no puede ser menor o igual a cero.\n", 163);
+        }
+    }while(filas <= 0);
+
+    do{
+        printf("Ingrese cantidad de columnas: ");
+        scanf("%d", &col);
+        if(col <= 0){
+            printf("N%cmero de columnas no puede ser menor o igual a cero.\n", 163);
+        }
+    }while(col <= 0);
 
     do{
         printf("Ingrese cantidad de bombas: ");
@@ -36,8 +47,8 @@ int main() {
     do{
         system("CLS");
 
-        muestra(matriz_valores, filas, col);
-        printf("-------------------\n");
+        //muestra(matriz_valores, filas, col);
+        //printf("-------------------\n");
         muestra(matriz_visual, filas, col);
 
         printf("\nIngrese coordenadas[x, y]: ");
