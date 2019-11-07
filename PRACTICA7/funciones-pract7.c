@@ -1,22 +1,18 @@
 #include <string.h>
 #include "funciones-pract7.h"
 
-void elimoracion(char *oracion){
+char* elimoracion(char *oracion){
 
-    int ind;
-
-    for(ind = 0; *(oracion+ind); ind++){
-        
-        if(*(oracion+ind) == '.' || *(oracion+ind) == '?' || *(oracion+ind) == '!'){
-            if(*(oracion+ind) == ' ')
-                strcpy(oracion, oracion+ind+2);
-                return;
+    do{
+        if(*oracion == '.' || *oracion == '?' || *oracion == '!'){
+            if(*oracion == ' ')
+                return oracion+2;
             else
-                strcpy(oracion, oracion+ind+1);
-                return;
+                return oracion+1;
         }
-    }
-    *oracion = NULL;
-    return;
+        oracion++;
+    }while(*oracion);
+    
+    return oracion;
 }
 
