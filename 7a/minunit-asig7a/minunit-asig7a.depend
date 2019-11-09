@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1573247384 source:c:\users\work\desktop\7a\funcionesasig7.c
+1573334331 source:c:\users\work\desktop\7a\funcionesasig7.c
 	"funcionesasig7.h"
 
 1573247384 c:\users\work\desktop\7a\funcionesasig7.h
 
-1573248262 source:c:\users\work\desktop\7a\minunit-asig7a\main.c
+1573248371 source:c:\users\work\desktop\7a\minunit-asig7a\main.c
 	"minunit.h"
 	"../funcionesasig7.h"
 
