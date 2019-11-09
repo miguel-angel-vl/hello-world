@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1573247384 source:c:\users\work\desktop\7a\main.c
+	<stdio.h>
+	<stdlib.h>
+	"funcionesasig7.h"
+
+1573247120 c:\users\work\desktop\7a\funcionespract7.h
+
+1573247149 source:c:\users\work\desktop\7a\funcionespract7.c
+	"funcionespract7.h"
+
+1573247384 source:c:\users\work\desktop\7a\funcionesasig7.c
+	"funcionesasig7.h"
+
+1573247384 c:\users\work\desktop\7a\funcionesasig7.h
+
