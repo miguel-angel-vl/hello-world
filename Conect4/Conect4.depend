@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1573702050 source:c:\users\work\desktop\conect4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.c>
+
