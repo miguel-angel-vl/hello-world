@@ -143,37 +143,35 @@ void organizardatos(struct losperros *perro){
         for(j = 0; j < n-i; j++ ){
 
             strcpy(nombre, perro[i].name);
+             strcpy(raza, perro[i].raza);
 
-            if(nombre[0] > perro[j].name[0]){
+            if(strcmp(nombre, perro[j].name)>0){
                 temp = perro[i];
                 perro[i] = perro[i+j];
                 perro[i+j] = temp;
-            }else{
-                if(strcmp(nombre, perro[j].name) == 0){
-                    strcpy(raza, perro[i].raza);
+            }else if(strcmp(nombre, perro[j].name) == 0 && strcmp(raza, perro[j].raza)>0){
+                    temp = perro[i];
+                    perro[i] = perro[i+j];
+                    perro[i+j] = temp;
+            }else if(strcmp(nombre, perro[j].name) == 0 && strcmp(raza, perro[j].raza) == 0)
 
-                    if(raza[0] > perro[j].raza[0]){
-                        temp = perro[i];
-                        perro[i] = perro[i+j];
-                        perro[i+j] = temp;
-                    }else{
-                        if(strcmp(raza, perro[j].raza) == 0){
+                    if(strcmp(raza, perro[j].raza) == 0){
 
-                            id = perro[i].dog_id;
+                        id = perro[i].dog_id;
 
-                            if(id > perro[j].dog_id){
-                                temp = perro[i];
-                                perro[i] = perro[i+j];
-                                perro[i+j] = temp;
-                            }
-
+                        if(id > perro[j].dog_id){
+                            temp = perro[i];
+                            perro[i] = perro[i+j];
+                            perro[i+j] = temp;
                         }
-                    }
 
+                    }
                 }
+
             }
-        }
-    }
+
+
+
     return;
 }
 

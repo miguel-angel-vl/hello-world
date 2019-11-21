@@ -5,8 +5,7 @@
 #define CANTPERROS 10
 #define CANTDUENOS 7
 
-struct losperros *encuentradueno(struct losperros *perro, char dueno[]);
-struct losperros *encuentrahermano1(struct losperros *perro, char hermano[]);
+
 
 
 struct losperros{
@@ -26,8 +25,21 @@ struct losduenos{
 
 };
 
+struct arr_perros{
+    struct losperros * arreglo;
+    int n;
+};
+
+struct arr_perros encuentradueno(struct losperros *perro, char dueno[]);
+struct losperros *encuentrahermano1(struct losperros *perro, char hermano[]);
+int tusperros(struct losperros *perro, char dueno[]);
+void declarardatos(struct losperros *perro, struct losduenos *dueno);
+void imprimir(struct losperros perro);
+int encuentranombre(struct losperros *perro, char nombre[]);
+
 int main()
 {
+    int k;
     int ind, buscardueno = 1, j;
     char owner[50], hermano[50];
     struct losperros perro[CANTPERROS];
@@ -57,11 +69,16 @@ int main()
             fflush(stdin);
             gets(owner);
 
-            for(j = 0; j < tusperros(perro, owner); j++){
-                imprimir(encuentradueno(perro, owner)[j]);
-            }
-        }
 
+            struct arr_perros res;
+
+            res =encuentradueno(perro, owner);
+            for(k=0; k < res.n; k++){
+                imprimir(res.arreglo[k]);
+
+            }
+
+        }
     }while (buscardueno == 1);
 
     printf("Escriba nombre de perro para encontrar su hermano: ");
@@ -78,6 +95,7 @@ int main()
 
     return 0;
 }
+
 
 void declarardatos(struct losperros *perro, struct losduenos *dueno)
 {
@@ -165,27 +183,31 @@ void declarardatos(struct losperros *perro, struct losduenos *dueno)
     strcpy(perro[7].owner, dueno[3].nombre);
     strcpy(perro[8].owner, dueno[6].nombre);
     strcpy(perro[9].owner, dueno[4].nombre);
-
     return;
 }
 
 
-struct losperros *encuentradueno(struct losperros *perro, char dueno[]){
+
+struct arr_perros encuentradueno(struct losperros *perro, char dueno[]){
+    struct arr_perros arr;
 
     int ind, n = CANTPERROS, i = 0;
     struct losperros *acumd;
 
-    acumd = (struct losperros*)malloc(1*sizeof(struct losperros));
-
     for(ind = 0; ind < n; ind++){
         if(stricmp(perro[ind].owner, dueno) == 0){
+            if (i==0){
+                acumd = (struct losperros*)malloc(1*sizeof(struct losperros));
+            }else{
+                acumd = (struct losperros*)realloc(acumd, (i+2)*sizeof(struct losperros));
+            }
             *(acumd+i) = perro[ind];
-            acumd = (struct losperros*)realloc(acumd, 1*sizeof(struct losperros));
             i++;
         }
     }
-
-    return acumd;
+    arr.arreglo = acumd;
+    arr.n = i;
+    return arr;
 }
 
 int encuentranombre(struct losperros *perro, char nombre[]){
@@ -249,3 +271,4 @@ void imprimir(struct losperros perro){
    return;
 
 }
+
