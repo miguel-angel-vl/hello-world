@@ -24,7 +24,8 @@ struct losduenos{
 
 int main()
 {
-    int ind;
+    int ind, buscarid = 1, id, buscardueno = 1;
+    char owner[50], hermano[50];
     struct losperros perro[CANTPERROS];
     struct losduenos dueno[CANTDUENOS];
 
@@ -36,6 +37,66 @@ int main()
         imprimir(perro[ind]);
         printf("\n");
     }
+
+    do{
+        do{
+            printf("\n%cDesea buscar perro en espec%cfico[POR ID]? [1]-S%c [0]-No: ", 168, 161, 161);
+            scanf("%d", &buscarid);
+
+            if(buscarid != 1 && buscarid != 0){
+                printf("OPCION NO VALIDA.\n\n");
+            }
+        }while(buscarid != 1 && buscarid != 0);
+
+        if(buscarid == 1){
+            printf("\nINGRESE ID DE PERRO A BUSCAR: ");
+            scanf("%d", &id);
+
+            if(encuentraid(perro, id) == -1){
+                printf("PERRO NO ENCONTRADO\n\n");
+
+            }else{
+                printf("\n");
+                imprimir(perro[encuentraid(perro, id)]);
+                printf("\n");
+            }
+        }
+
+    }while (buscarid == 1);
+
+    do{
+        do{
+            printf("\n%cDesea buscar perro en espec%cfico[POR DUE%cO]? [1]-S%c [0]-No: ", 168, 161, 165, 161);
+            scanf("%d", &buscardueno);
+
+            if(buscardueno != 1 && buscardueno != 0){
+                printf("OPCION NO VALIDA.\n\n");
+            }
+        }while(buscardueno != 1 && buscardueno != 0);
+
+        if(buscardueno == 1){
+            printf("\nINGRESE DUE%cO DE PERRO A BUSCAR: ", 165);
+            fflush(stdin);
+            gets(owner);
+
+            if(encuentradueno(perro, owner) == -1){
+                printf("PERRO NO ENCONTRADO\n\n");
+
+            }else{
+                printf("\n");
+                imprimir(perro[encuentradueno(perro, owner)]);
+                printf("\n");
+            }
+        }
+
+    }while (buscardueno == 1);
+
+    printf("Escriba nombre de perro para encontrar su hermano: ");
+    fflush(stdin);
+    gets(hermano);
+
+    printf("%s es hermano de %s", perro[encuentranombre(perro, hermano)].name, perro[encuentrahermano1(perro, hermano)].name);
+    //imprimir(perro[encuentrahermano1(perro, hermano)]);
 
     return 0;
 }
@@ -97,24 +158,24 @@ void declarardatos(struct losperros *perro, struct losduenos *dueno)
     strcpy(perro[0].dad, perro[9].name);
     strcpy(perro[1].dad, perro[0].name);
     strcpy(perro[2].dad, perro[9].name);
-    strcpy(perro[3].dad, "");
+    strcpy(perro[3].dad, "\0");
     strcpy(perro[4].dad, perro[9].name);
-    strcpy(perro[5].dad, "");
+    strcpy(perro[5].dad, "\0");
     strcpy(perro[6].dad, perro[4].name);
     strcpy(perro[7].dad, perro[4].name);
     strcpy(perro[8].dad, perro[0].name);
-    strcpy(perro[9].dad, "");
+    strcpy(perro[9].dad, "\0");
 
     strcpy(perro[0].mom, perro[2].name);
     strcpy(perro[1].mom, perro[2].name);
-    strcpy(perro[2].mom, "");
+    strcpy(perro[2].mom, "\0");
     strcpy(perro[3].mom, perro[1].name);
     strcpy(perro[4].mom, perro[8].name);
     strcpy(perro[5].mom, perro[8].name);
     strcpy(perro[6].mom, perro[1].name);
     strcpy(perro[7].mom, perro[8].name);
     strcpy(perro[8].mom, perro[2].name);
-    strcpy(perro[9].mom, "");
+    strcpy(perro[9].mom, "\0");
 
     strcpy(perro[0].owner, dueno[4].nombre);
     strcpy(perro[1].owner, dueno[0].nombre);
@@ -132,20 +193,19 @@ void declarardatos(struct losperros *perro, struct losduenos *dueno)
 
 void organizaredad(struct losperros *perro){
 
-    int ind, n = CANTPERROS, burb = 1, masv;
+    int ind, n = CANTPERROS, burb = 1, masv, i, j;
     struct losperros temp;
 
-    for(ind = 0; ind < n; ind++){
-        burb = 1;
-        masv = perro[ind].age;
+    for(i = 0; i < n-1; i++){
+        for(j = 0; j < n-i; j++ ){
 
-        while(masv > perro[ind+burb].age && ind+burb < n){
+            masv = perro[i].age;
 
-            temp = perro[ind];
-            perro[ind] = perro[ind+burb];
-            perro[ind+burb] = temp;
-
-            burb++;
+            if(masv > perro[i+j].age){
+                temp = perro[i];
+                perro[i] = perro[i+j];
+                perro[i+j] = temp;
+            }
         }
     }
     return;
@@ -161,18 +221,71 @@ void swap(struct losperros perro, struct losperros cambio)
    return;
 }
 
-void imprimir(struct losperros perro){
+int encuentraid(struct losperros *perro, int id){
 
-   printf("ID      : %d\n",perro.dog_id);
-   printf("Nombre  : %s\n",perro.name);
-   printf("Edad    : %d\n",perro.age);
-   printf("Raza    : %s\n",perro.raza);
-   printf("Padre   : %s\n",perro.dad);
-   printf("Madre   : %s\n",perro.mom);
-   printf("Due%co   : %s\n",164, perro.owner);
+    int ind, n = CANTPERROS;
 
-   return;
+    for(ind = 0; ind < n; ind++){
+        if(perro[ind].dog_id == id){
+            return ind;
+        }
+    }
+    return -1;
+}
+
+int encuentradueno(struct losperros *perro, char dueno[]){
+
+    int ind, n = CANTPERROS;
+
+    for(ind = 0; ind < n; ind++){
+        if(stricmp(perro[ind].owner, dueno) == 0){
+            return ind;
+        }
+    }
+
+    return -1;
+}
+
+int encuentranombre(struct losperros *perro, char nombre[]){
+
+    int ind, n = CANTPERROS;
+
+    for(ind = 0; ind < n; ind++){
+        if (stricmp(perro[ind].name, nombre) == 0){
+            return ind;
+        }
+    }
+    return -1;
+}
+
+int encuentrahermano1(struct losperros *perro, char hermano[]){
+
+    int ind, n = CANTPERROS, j;
+
+    for(ind = 0; ind < n; ind++){
+        if(stricmp(perro[ind].name, hermano) == 0){
+            for(j = 1; j < n; j++){
+                if((strcmp(perro[ind].dad, perro[j].dad) == 0 || strcmp(perro[ind].mom, perro[j].mom) == 0) && strcmp(perro[ind].name, perro[j].name) != 0){
+                    return j;
+                }
+            }
+        }
+    }
+    return -1;
 
 }
 
 
+void imprimir(struct losperros perro){
+
+   printf("ID      : %d\n", perro.dog_id);
+   printf("Nombre  : %s\n", perro.name);
+   printf("Edad    : %d\n", perro.age);
+   printf("Raza    : %s\n", perro.raza);
+   printf("Padre   : %s\n", perro.dad);
+   printf("Madre   : %s\n", perro.mom);
+   printf("Due%co   : %s\n", 164, perro.owner);
+
+   return;
+
+}
