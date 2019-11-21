@@ -86,7 +86,7 @@ void declarardatos(struct losperros *perro, struct losduenos *dueno)
     perro[8].age = 20;
     perro[9].age = 5;
 
-    strcpy(perro[0].raza, "Mastin napolitano");
+    strcpy(perro[0].raza, "Bulldog");
     strcpy(perro[1].raza, "Beagle");
     strcpy(perro[2].raza, "Chihuahua");
     strcpy(perro[3].raza, "Yorkie Poo");
@@ -141,6 +141,7 @@ void organizardatos(struct losperros *perro){
 
     for(i = 0; i < n-1; i++){
         for(j = 0; j < n-i; j++ ){
+            id = perro[i].dog_id;
 
             strcpy(nombre, perro[i].name);
              strcpy(raza, perro[i].raza);
@@ -153,22 +154,16 @@ void organizardatos(struct losperros *perro){
                     temp = perro[i];
                     perro[i] = perro[i+j];
                     perro[i+j] = temp;
-            }else if(strcmp(nombre, perro[j].name) == 0 && strcmp(raza, perro[j].raza) == 0)
-
-                    if(strcmp(raza, perro[j].raza) == 0){
-
-                        id = perro[i].dog_id;
-
-                        if(id > perro[j].dog_id){
-                            temp = perro[i];
-                            perro[i] = perro[i+j];
-                            perro[i+j] = temp;
-                        }
-
-                    }
-                }
+            }else if(strcmp(nombre, perro[j].name) == 0 && strcmp(raza, perro[j].raza) == 0 && id> perro[j].dog_id)
+            {
+                temp = perro[i];
+                perro[i] = perro[i+j];
+                perro[i+j] = temp;
 
             }
+        }
+
+    }
 
 
 
