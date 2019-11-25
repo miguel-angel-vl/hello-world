@@ -144,7 +144,7 @@ ESTUDIANTE * cargarEstudiantes(char * narch){
         return NULL;
     }
 
-    fread(n_est, sizeof(int), 1, arch);
+    fread(&n_est, sizeof(int), 1, arch);
     estud = (ESTUDIANTE *)malloc(n_est * sizeof(ESTUDIANTE));
     fread(estud, sizeof(ESTUDIANTE), n_est, arch);
 
