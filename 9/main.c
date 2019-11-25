@@ -138,7 +138,7 @@ ESTUDIANTE * cargarEstudiantes(char * narch){
     char buff[100];
 
     ESTUDIANTE* estud;
-    FILE *arch = fopen("narch", "rb");
+    FILE *arch = fopen(NOMARCH, "rb");
 
     if(arch == NULL){
         return NULL;
