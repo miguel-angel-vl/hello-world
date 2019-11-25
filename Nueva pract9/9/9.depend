@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1574629556 source:c:\users\work\desktop\9\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1574706537 source:c:\users\work\desktop\hello-world-master\9\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1574708994 source:c:\users\work\desktop\nueva pract9\9\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
