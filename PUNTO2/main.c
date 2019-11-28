@@ -1,72 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int sumatoria(int, int, int);
-int mcd(int , int);
+
+typedef struct entero_largisimo{
+    char * digitos;
+} ENTERO_LARG;
+
+ENTERO_LARG multiplica(ENTERO_LARG a, ENTERO_LARG b);
+ENTERO_LARG suma(ENTERO_LARG a, ENTERO_LARG b);
 
 int main()
 {
-    int val, min, max;
-    printf("Ingrese n%cmero: ", 163);
-    scanf("%d", &val);
-
-    do{
-        printf("Ingrese m%cnimo del rango: ", 161);
-        scanf("%d", &min);
-
-        if(min <1){
-            printf("NO PUEDE SER MENOR QUE 1");
-        }
-    }while(min < 1);
-
-    do{
-        printf("Ingrese m%cximo del rango: ", 160);
-        scanf("%d", &max);
-
-        if(max<min){
-            printf("\nNO PUEDE SER MENOR QUE MINIMO\n\n");
-        }
-    }while(max<min);
-
-    printf("\nLA SUMATORIA DE LOS MCD PARES DENTRO DEL RANGO ES: %d\n", sumatoria(val, min, max));
-
+    printf("Hello world!\n");
     return 0;
 }
 
-int sumatoria(int num, int liminf, int limsup){
+ENTERO_LARG multiplica(ENTERO_LARG a, ENTERO_LARG b){
 
-    int suma = 0;
+    ENTERO_LARG *resultado;
+    int canta = strlen(a.digitos), cantb = strlen(b.digitos), i, j, max;
 
-    do{
-        if((mcd(num, liminf)) % 2 == 0){
-            suma += mcd(num, liminf);
-        }
-        liminf++;
-    }while(liminf<=limsup);
-
-    return suma;
-
-}
-
-int mcd(int x, int y){
-
-    int div, aux;
-
-    if(y > x){
-        aux = x;
-        x = y;
-        y = aux;
+    if(canta > cantb){
+        resultado.digitos = (char*)malloc((canta+1) * sizeof(char));
+        max = cantb;
+        menor = canta;
+    }else if(cantb > canta){
+        resultado.digitos = (char*)malloc((cantb+1) * sizeof(char));
+        max = canta;
+        menor = cantb;
     }
 
-    for(div = x; div>=1; div--){
-        if(y%div == 0 && x%div == 0){
-            return div;
-            break;
-        }
-    }
-    return 1;
-}
+    for(i = max; i > 0; i--){
 
+    }
+
+}
 
 
 

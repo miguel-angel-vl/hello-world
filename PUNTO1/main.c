@@ -1,49 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int mcd(int, int);
+char *agregapuntoycoma(char *str);
 
 int main()
 {
-    int num1, num2;
+    char *str;
 
-    printf("Ingrese primer n%cmero: ",163);
-    scanf("%d", &num1);
+    str = (char *)malloc(100*sizeof(char));
 
-    printf("Ingrese segundo n%cmero: ",163);
-    scanf("%d", &num2);
+    strcpy(str, "int main(){\n     printf(\"Hello World!\")\n \n }" );
 
-    printf("\nEl m%cximo com%cn divisor es: %d\n", 160, 163, mcd(num1, num2));
+    printf("Cadena modificada: %s", agregapuntoycoma(str));
 
     return 0;
 }
 
-int mcd(int x, int y){
 
-    int div, aux;
+char *agregapuntoycoma(char *str){
 
-    if(y > x){
-        aux = x;
-        x = y;
-        y = aux;
-    }
+    int ind, lstr = strlen(str), ind2;
 
-    for(div = x; div>=1; div--){
-        if(y%div == 0 && x%div == 0){
-            return div;
-            break;
+    for(ind = 0; ind < lstr; ind++){
+        if(*(str+ind) == '\n' && *(str+ind-1) != ';' && *(str+ind+1) != '\n'){
+
+            str = (char *)realloc(str, (lstr+1)*sizeof(char));
+
+            for(ind2 = strlen(str)-1; ind2 > ind; ind2--){
+                *(str+ind2) = *(str+ind2+1);
+            }
+            *(str+ind2) = ';';
+
         }
     }
 
-    return 1;
+    return str;
 }
-
-
-
-
-
-
-
-
-
-
