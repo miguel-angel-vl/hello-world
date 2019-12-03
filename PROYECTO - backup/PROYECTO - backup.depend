@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1575414590 source:c:\users\work\desktop\proyecto - backup\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.c>
+	<ctype.h>
+
