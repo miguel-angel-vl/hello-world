@@ -1,0 +1,21 @@
+BIENVENIDO A "A QUE NO SABES"
+
+Este juego esta basado en preguntas de cultura general. Se te realizaran varias preguntas de la categoria que elijas, 
+y mientras mas preguntas respondas correctamente, mas puntos acumulas!
+
+Trata de romper tu record anterior, o compite con tus amigos para asi decir que tu eres la verdadera para!!
+Para jugar, primero debes regitrarte en la opcion 1. de 'JUGAR', donde se requerira que ingreses nombre de usuario 
+y contrasena.
+
+-UN JUGADOR: Es donde podras ingresar al juego, digitando el nombre de usuario y la contrasena con los que te 
+registraste. Dentro de aqui podras elegir entre las categorias SERIES DE TV, PELICULAS, HISTORIA, GEOGRAFIA, DEPORTE, 
+MUSICA Y CULTURA GENERAL, y de ese tema se haran las preguntas.
+
+-MULTIJUGADOR: Aqui podras jugar con tus companeros. Se asignan los jugadores 1 y 2, y se turnan respondiendo 
+10 preguntas. El que reponda mas preguntas correctamente es el ganador!
+
+-QUICK GAME: Si andas de prisa y solo quieres jugar un poco mas, el Quick Game es tu solucion! 
+En este modo solo tendras que reponder a 3 preguntas de la categoria que elijas.
+
+-RESULTADOS ANTERIORES: Aqui se presentan los SCORES de los usuarios que han jugado una o mas partidas. OJO: Solo se
+guardan los scores cuando juegas en UN JUGADOR.
